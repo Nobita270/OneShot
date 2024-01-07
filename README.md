@@ -15,7 +15,7 @@
 ## [Termux](https://termux.com/)
 Please note that root access is required.  
 
-#### Using installer : (Enables shortcut "wifi" & "wified")
+#### Using installer : (Enables "wifi" & "waifus"!)
  ```
  curl -sSf https://raw.githubusercontent.com/Nobita270/OneShot/master/installer.sh | bash
  ```
