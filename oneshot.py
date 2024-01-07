@@ -636,10 +636,10 @@ class Companion:
         return False
 
     def __credentialPrint(self, wps_pin=None, wpa_psk=None, essid=None):
-        print('-*-' * 15)
-        print(f"[+] '{essid}' ɪꜱ ʏᴏᴜʀꜱ ɴᴏᴡ (●'◡'●)")
+        print('(～￣▽￣)～' * 7)
+        print(f"\n\n\n[+] '{essid}' ɪꜱ ʏᴏᴜʀꜱ ɴᴏᴡ (●'◡'●)")
         print(f"[+] ᴘᴀꜱꜱ: '{wpa_psk}'")
-        print(f"[+] ᴘɪɴ ᴜꜱᴇᴅ: '{wps_pin}'")
+        print(f"[+] ᴘɪɴ ᴜꜱᴇᴅ: '{wps_pin}' \n\n\n")
 
     def __saveResult(self, bssid, essid, wps_pin, wpa_psk):
         if not os.path.exists(self.reports_dir):
