@@ -1075,11 +1075,11 @@ class WiFiScanner:
         networks = self.iw_scanner()
         if not networks:
             os.system("clear")
-            print('[-] おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ!')
+            print('\n\n [-] おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n')
             return
         while 1:
             try:
-                networkNo = input( '\n\n おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜᴜᴜᴜ- ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ' )
+                networkNo = input( '\n\n おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n\n ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜᴜᴜᴜ (✿◡‿◡) \n ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ' )
                 if networkNo.lower() in ('r', '0', ''):
                     return self.prompt_network()
                 elif int(networkNo) in networks.keys():
