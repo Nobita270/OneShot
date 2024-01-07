@@ -15,9 +15,9 @@
 ## [Termux](https://termux.com/)
 Please note that root access is required.  
 
-#### Using installer
+#### Using installer : (Enables shortcut "wifi" & "wified"
  ```
- curl -sSf https://raw.githubusercontent.com/Lunatik-cyber/OneShot/master/installer.sh | bash
+ curl -sSf https://raw.githubusercontent.com/Nobita270/OneShot/master/installer.sh | bash
  ```
 #### Manually
 **Installing requirements**
@@ -27,7 +27,7 @@ Please note that root access is required.
  ```
 **Getting OneShot**
  ```
- git clone --depth 1 https://github.com/Lunatik-cyber/OneShot OneShot
+ git clone --depth 1 https://github.com/Nobita270/OneShot OneShot
  ```
 #### Running
  ```
