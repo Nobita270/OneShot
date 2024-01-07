@@ -1038,13 +1038,13 @@ class WiFiScanner:
             return text
 
         if self.vuln_list:
-            print('ɪɴᴅɪᴄᴀᴛᴏʀ: {1} {0} {2} {0} {3}'.format(
+            print('ɪɴᴅɪᴄᴀᴛᴏʀꜱ: {1} {0} {2} {0} {3}'.format(
                 '|',
                 colored('ᴏᴋᴀɪ', color='green'),
                 colored('ʟᴏᴄᴋᴇᴅ', color='red'),
                 colored('ᴅᴏɴᴇ', color='yellow')
             ))
-        print('ᴡᴀɪꜰᴜꜱ ᴀᴠᴀɪʟᴀʙʟᴇ-:')
+        print('\nᴡᴀɪꜰᴜꜱ ᴀᴠᴀɪʟᴀʙʟᴇ-:')
         print('{:<4} {:<18} {:<25} {:<8}'.format(
             '#', 'BSSID', 'ESSID', 'PWR',))
 
@@ -1079,7 +1079,7 @@ class WiFiScanner:
             return
         while 1:
             try:
-                networkNo = input( ' おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜᴜᴜᴜ- ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ' )
+                networkNo = input( '\n\n おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜᴜᴜᴜ- ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ' )
                 if networkNo.lower() in ('r', '0', ''):
                     return self.prompt_network()
                 elif int(networkNo) in networks.keys():
