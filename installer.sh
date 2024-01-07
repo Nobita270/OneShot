@@ -8,9 +8,9 @@ git clone --depth 1 https://github.com/Nobita270/OneShot OneShot
 chmod +x /data/data/com.termux/files/home/OneShot/oneshot.py
 chmod +x /data/data/com.termux/files/home/OneShot/wifi_connect.sh
 echo "cd /data/data/com.termux/files/home/OneShot; sudo python3 oneshot.py -i wlan0 -K -w" > /data/data/com.termux/files/usr/bin/wifi
-echo "clear; cat /data/data/com.termux/files/home/OneShot/reports/stored.txt" > /data/data/com.termux/files/usr/bin/wified
+echo "clear; cat /data/data/com.termux/files/home/OneShot/reports/stored.txt" > /data/data/com.termux/files/usr/bin/waifus
 chmod +x /data/data/com.termux/files/usr/bin/wifi
-chmod +x /data/data/com.termux/files/usr/bin/wified
+chmod +x /data/data/com.termux/files/usr/bin/waifus
 clear
 printf "#########################################################
 #  All done! Now you can run OneShot with:
@@ -20,5 +20,5 @@ printf "#########################################################
 #   (cd OneShot && git pull)
 #
 #  To see hacked networks:
-#    wified
+#    waifus
 #########################################################\n"
