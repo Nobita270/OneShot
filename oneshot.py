@@ -637,9 +637,9 @@ class Companion:
 
     def __credentialPrint(self, wps_pin=None, wpa_psk=None, essid=None):
         print('-*-' * 15)
-        print(f"[+] WPS PIN: '{wps_pin}'")
-        print(f"[+] WPA PSK: '{wpa_psk}'")
-        print(f"[+] AP SSID: '{essid}'")
+        print(f"[+] '{essid}' ɪꜱ ʏᴏᴜʀꜱ ɴᴏᴡ (●'◡'●)")
+        print(f"[+] ᴘᴀꜱꜱ: '{wpa_psk}'")
+        print(f"[+] ᴘɪɴ ᴜꜱᴇᴅ: '{wps_pin}'")
 
     def __saveResult(self, bssid, essid, wps_pin, wpa_psk):
         if not os.path.exists(self.reports_dir):
@@ -756,7 +756,7 @@ class Companion:
             try:
                 self.__wps_connection(bssid, pin, pixiemode)
             except KeyboardInterrupt:
-                print("\nОтмена…")
+                print("\nᴄᴀɴᴄᴇʟ...")
                 self.__savePin(bssid, pin)
                 return False
         else:
@@ -860,7 +860,7 @@ class Companion:
                 self.__second_half_bruteforce(bssid, f_half, s_half, delay)
             raise KeyboardInterrupt
         except KeyboardInterrupt:
-            print("\nОтмена…")
+            print("\nᴄᴀɴᴄᴇʟ...")
             filename = self.sessions_dir + '{}.run'.format(bssid.replace(':', '').upper())
             with open(filename, 'w') as file:
                 file.write(self.bruteforce.mask)
@@ -1038,13 +1038,13 @@ class WiFiScanner:
             return text
 
         if self.vuln_list:
-            print('Индикаторы: {1} {0} {2} {0} {3}'.format(
+            print('ɪɴᴅɪᴄᴀᴛᴏʀ: {1} {0} {2} {0} {3}'.format(
                 '|',
-                colored('Можно взломать', color='green'),
-                colored('WPS заблокирован', color='red'),
-                colored('Уже взломан', color='yellow')
+                colored('ᴏᴋᴀɪ', color='green'),
+                colored('ʟᴏᴄᴋᴇᴅ', color='red'),
+                colored('ᴅᴏɴᴇ', color='yellow')
             ))
-        print('Список сетей:')
+        print('ᴡᴀɪꜰᴜꜱ ᴀᴠᴀɪʟᴀʙʟᴇ-:')
         print('{:<4} {:<18} {:<25} {:<8}'.format(
             '#', 'BSSID', 'ESSID', 'PWR',))
 
@@ -1054,7 +1054,7 @@ class WiFiScanner:
         for n, network in network_list_items:
             number = f'{n})'
             model = '{} {}'.format(network['Model'], network['Model number'])
-            essid = truncateStr(network['ESSID'], 25) if network['ESSID'] else 'Скрытый'
+            essid = truncateStr(network['ESSID'], 25) if network['ESSID'] else 'ʜɪᴅᴅᴇɴ'
             deviceName = truncateStr(network['Device name'], 27)
             line = '{:<4} {:<18} {:<25} {:<8}'.format(
                 number, network['BSSID'], essid, network['Level']
@@ -1075,11 +1075,12 @@ class WiFiScanner:
         networks = self.iw_scanner()
         if not networks:
             os.system("clear")
-            print('[-] Ха-ха, тута пуста.')
+            print('[-] おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ!')
             return
         while 1:
             try:
-                networkNo = input('Выберите цель (нажмите Enter, чтобы обновить): ')
+                networkNo = input(' おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ!
+                                \n ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜ- ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ')
                 if networkNo.lower() in ('r', '0', ''):
                     return self.prompt_network()
                 elif int(networkNo) in networks.keys():
@@ -1087,7 +1088,7 @@ class WiFiScanner:
                 else:
                     raise IndexError
             except Exception:
-                print('Неверный выбор')
+                print('ᴡʀᴏɴɢ ᴄʜᴏɪᴄᴇ')
 
 
 def ifaceUp(iface, down=False):
@@ -1110,34 +1111,34 @@ def die(msg):
 
 def usage():
     return """
-OneShotPin 0.0.2 (c) 2017 rofl0r, modded by drygdryg, modded by Lunatik-cyber
+OneShot 0.0.2 (c) 2017 rofl0r, modded by @R_U_O_K_67
 
 %(prog)s <arguments>
 
-Необходимые аргументы:
-    -i, --interface=<wlan0>  : Имя используемого интерфейса
+ʀᴇQᴜɪʀᴇᴅ ᴀʀɢᴜᴍᴇɴᴛꜱ:
+    -i, --interface=<wlan0>  : ɴᴀᴍᴇ ᴏꜰ ᴛʜᴇ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴜꜱᴇᴅ
 
-Основные аргументы:
-    -b, --bssid=<mac>        : BSSID целевой точки доступа
-    -p, --pin=<wps pin>      : Использовать указанный пин (произвольная строка или 48-значный пин)
-    -K, --pixie-dust         : Выполнить атаку Pixie Dust
-    -B, --bruteforce         : Запустить онлайн-атаку полным перебором
-    --push-button-connect    : Запустите подключение кнопки WPS
+ᴍᴀɪɴ ᴀʀɢᴜᴍᴇɴᴛꜱ:
+    -b, --bssid=<mac>        : BSSID ᴏꜰ ᴛᴀʀɢᴇᴛ'ꜱ ᴀᴄᴄᴇꜱꜱ ᴘᴏɪɴᴛ
+    -p, --pin=<wps pin>      : ᴜꜱᴇ ᴛʜᴇ ꜱᴘᴇᴄɪꜰɪᴇᴅ ᴘɪɴ (ᴀɴʏ ꜱᴛʀɪɴɢ ᴏʀ 48-ᴅɪɢɪᴛ ᴘɪɴ)
+    -K, --pixie-dust         : ᴘᴇʀꜰᴏʀᴍ ᴀ ᴘɪxɪᴇ ᴅᴜꜱᴛ ᴀᴛᴛᴀᴄᴋ
+    -B, --bruteforce         : ʟᴀᴜɴᴄʜ ᴀɴ ᴏɴʟɪɴᴇ ʙʀᴜᴛᴇ ꜰᴏʀᴄᴇ ᴀᴛᴛᴀᴄᴋ
+    --push-button-connect    : ꜱᴛᴀʀᴛ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛʜᴇ ᴡᴘꜱ ʙᴜᴛᴛᴏɴ
 
-Дополнительные аргументы:
-    -d, --delay=<n>          : Установите задержку между попытками пин-кода [0]
-    -w, --write              : Запишите учетные данные AP в файл в случае успеха
-    -F, --pixie-force        : Запустите Pixiewps с опцией --force (полный перебор)
-    -X, --show-pixie-cmd     : Всегда печатать команду Pixiewps
-    --vuln-list=<filename>   : Использовать пользовательский файл со списком уязвимых устройств ['vulnwsc.txt']
-    --iface-down             : Вниз сетевой интерфейс, когда работа закончена
-    -l, --loop               : Запустить в цикле
-    -r, --reverse-scan       : Обратный порядок сетей в списке сетей. Полезно на небольших дисплеях
-    --mtk-wifi               : Активировать драйвер интерфейса MediaTek Wi-Fi при запуске и деактивировать его при выходе
-                               (для внутренних адаптеров Wi-Fi, реализованных в SoC MediaTek). Перед использованием отключите Wi-Fi в настройках системы.
-    -v, --verbose            : Подробный вывод
+ᴀᴅᴅɪᴛɪᴏɴᴀʟ ᴀʀɢᴜᴍᴇɴᴛꜱ:
+    -d, --delay=<n>          : ꜱᴇᴛ ᴛʜᴇ ᴅᴇʟᴀʏ ʙᴇᴛᴡᴇᴇɴ ᴘɪɴ ᴄᴏᴅᴇ ᴀᴛᴛᴇᴍᴘᴛꜱ [0]
+    -w, --write              : ᴡʀɪᴛᴇ ᴀᴘ ᴄʀᴇᴅᴇɴᴛɪᴀʟꜱ ᴛᴏ ᴀ ꜰɪʟᴇ ɪꜰ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟ
+    -F, --pixie-force        : ʀᴜɴ ᴘɪxɪᴇᴡᴘꜱ ᴡɪᴛʜ ᴛʜᴇ --force ᴏᴘᴛɪᴏɴ (ʙʀᴜᴛᴇ ꜰᴏʀᴄᴇ)
+    -X, --show-pixie-cmd     : ᴀʟᴡᴀʏꜱ ᴛʏᴘᴇ ᴘɪxɪᴇᴡᴘꜱ ᴄᴏᴍᴍᴀɴᴅ
+    --vuln-list=<filename>   : ᴜꜱᴇ ᴀ ᴄᴜꜱᴛᴏᴍ ꜰɪʟᴇ ᴡɪᴛʜ ᴀ ʟɪꜱᴛ ᴏꜰ ᴠᴜʟɴᴇʀᴀʙʟᴇ ᴅᴇᴠɪᴄᴇꜱ ['ᴠᴜʟɴᴡꜱᴄ.ᴛxᴛ']
+    --iface-down             : ᴅᴏᴡɴ ᴛʜᴇ ɴᴇᴛᴡᴏʀᴋ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴡʜᴇɴ ᴡᴏʀᴋ ɪꜱ ꜰɪɴɪꜱʜᴇᴅ
+    -l, --loop               : ʀᴜɴ ɪɴ ᴀ ʟᴏᴏᴘ
+    -r, --reverse-scan       : ʀᴇᴠᴇʀꜱᴇ ᴛʜᴇ ᴏʀᴅᴇʀ ᴏꜰ ɴᴇᴛᴡᴏʀᴋꜱ ɪɴ ᴛʜᴇ ɴᴇᴛᴡᴏʀᴋ ʟɪꜱᴛ. ᴜꜱᴇꜰᴜʟ ᴏɴ ꜱᴍᴀʟʟ ᴅɪꜱᴘʟᴀʏꜱ
+    --mtk-wifi               : ᴀᴄᴛɪᴠᴀᴛᴇ ᴍᴇᴅɪᴀᴛᴇᴋ ᴡɪ-ꜰɪ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴅʀɪᴠᴇʀ ᴏɴ ꜱᴛᴀʀᴛᴜᴘ ᴀɴᴅ ᴅᴇᴀᴄᴛɪᴠᴀᴛᴇ ɪᴛ ᴏɴ ᴇxɪᴛ 
+                                (ꜰᴏʀ ɪɴᴛᴇʀɴᴀʟ ᴡɪ-ꜰɪ ᴀᴅᴀᴘᴛᴇʀꜱ ɪᴍᴘʟᴇᴍᴇɴᴛᴇᴅ ɪɴ ᴍᴇᴅɪᴀᴛᴇᴋ ꜱᴏᴄ). ʙᴇꜰᴏʀᴇ ᴜꜱᴇ, ᴛᴜʀɴ ᴏꜰꜰ ᴡɪ-ꜰɪ ɪɴ ꜱʏꜱᴛᴇᴍ ꜱᴇᴛᴛɪɴɢꜱ.
+    -v, --verbose            : ᴅᴇᴛᴀɪʟᴇᴅ ᴏᴜᴛᴘᴜᴛ
 
-Пример:
+ᴇxᴀᴍᴘʟᴇ:
     %(prog)s -i wlan0 -b 00:90:4C:C1:AC:21 -K
 """
 
@@ -1146,7 +1147,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='OneShotPin 0.0.2 (c) 2017 rofl0r, modded by drygdryg, modded by Lunatik-cyber',
+        description='OneShot 0.0.2 (c) 2017 rofl0r, modded by @R_U_O_K_67',
         epilog='Example: %(prog)s -i wlan0 -b 00:90:4C:C1:AC:21 -K'
     )
 
@@ -1154,63 +1155,63 @@ if __name__ == '__main__':
         '-i', '--interface',
         type=str,
         required=True,
-        help='Имя используемого интерфейса'
+        help='ɴᴀᴍᴇ ᴏꜰ ᴛʜᴇ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴜꜱᴇᴅ'
     )
     parser.add_argument(
         '-b', '--bssid',
         type=str,
-        help='BSSID целевой точки доступа'
+        help='ʙꜱꜱɪᴅ ᴏꜰ ᴛʜᴇ ᴛᴀʀɢᴇᴛ ᴀᴄᴄᴇꜱꜱ ᴘᴏɪɴᴛ'
     )
     parser.add_argument(
         '-p', '--pin',
         type=str,
-        help='Использовать указанный пин (произвольная строка или 4/8-значный пин)'
+        help='ᴜꜱᴇ ᴛʜᴇ ꜱᴘᴇᴄɪꜰɪᴇᴅ ᴘɪɴ (ᴀɴʏ ꜱᴛʀɪɴɢ ᴏʀ 4/8 ᴅɪɢɪᴛ ᴘɪɴ)'
     )
     parser.add_argument(
         '-K', '--pixie-dust',
         action='store_true',
-        help='Выполнить атаку Pixie Dust'
+        help='ᴘᴇʀꜰᴏʀᴍ ᴀ ᴘɪxɪᴇ ᴅᴜꜱᴛ ᴀᴛᴛᴀᴄᴋ'
     )
     parser.add_argument(
         '-F', '--pixie-force',
         action='store_true',
-        help='Запустите Pixiewps с опцией --force (полный перебор)'
+        help='ʀᴜɴ ᴘɪxɪᴇᴡᴘꜱ ᴡɪᴛʜ ᴛʜᴇ --force ᴏᴘᴛɪᴏɴ (ʙʀᴜᴛᴇ ꜰᴏʀᴄᴇ)'
     )
     parser.add_argument(
         '-X', '--show-pixie-cmd',
         action='store_true',
-        help='Всегда печатать команду Pixiewps'
+        help='ᴀʟᴡᴀʏꜱ ᴛʏᴘᴇ ᴘɪxɪᴇᴡᴘꜱ ᴄᴏᴍᴍᴀɴᴅ'
     )
     parser.add_argument(
         '-B', '--bruteforce',
         action='store_true',
-        help='Запустить онлайн-атаку полным перебором'
+        help='ʟᴀᴜɴᴄʜ ᴀɴ ᴏɴʟɪɴᴇ ʙʀᴜᴛᴇ ꜰᴏʀᴄᴇ ᴀᴛᴛᴀᴄᴋ'
     )
     parser.add_argument(
         '--pbc', '--push-button-connect',
         action='store_true',
-        help='Запустите подключение кнопки WPS'
+        help='ꜱᴛᴀʀᴛ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛʜᴇ ᴡᴘꜱ ʙᴜᴛᴛᴏɴ'
     )
     parser.add_argument(
         '-d', '--delay',
         type=float,
-        help='Установить задержку между попытками пин-кода'
+        help='ꜱᴇᴛ ᴀ ᴅᴇʟᴀʏ ʙᴇᴛᴡᴇᴇɴ ᴘɪɴ ᴄᴏᴅᴇ ᴀᴛᴛᴇᴍᴘᴛꜱ'
     )
     parser.add_argument(
         '-w', '--write',
         action='store_true',
-        help='Запись данных в файл'
+        help='ᴡʀɪᴛɪɴɢ ᴅᴀᴛᴀ ᴛᴏ ᴀ ꜰɪʟᴇ'
     )
     parser.add_argument(
         '--iface-down',
         action='store_true',
-        help='Отключить сетевой интерфейс, когда работа закончена'
+        help='ᴅɪꜱᴀʙʟᴇ ɴᴇᴛᴡᴏʀᴋ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴡʜᴇɴ ᴡᴏʀᴋ ɪꜱ ꜰɪɴɪꜱʜᴇᴅ'
     )
     parser.add_argument(
         '--vuln-list',
         type=str,
         default=os.path.dirname(os.path.realpath(__file__)) + '/vulnwsc.txt',
-        help='Использовать пользовательский файл со списком уязвимых устройств'
+        help='ᴜꜱᴇ ᴀ ᴄᴜꜱᴛᴏᴍ ꜰɪʟᴇ ᴡɪᴛʜ ᴀ ʟɪꜱᴛ ᴏꜰ ᴠᴜʟɴᴇʀᴀʙʟᴇ ᴅᴇᴠɪᴄᴇꜱ'
     )
     parser.add_argument(
         '-l', '--loop',
@@ -1220,38 +1221,38 @@ if __name__ == '__main__':
     parser.add_argument(
         '-r', '--reverse-scan',
         action='store_true',
-        help='Обратный порядок сетей в списке сетей. Полезно на небольших дисплеях'
+        help='ʀᴇᴠᴇʀꜱᴇ ᴛʜᴇ ᴏʀᴅᴇʀ ᴏꜰ ɴᴇᴛᴡᴏʀᴋꜱ ɪɴ ᴛʜᴇ ɴᴇᴛᴡᴏʀᴋ ʟɪꜱᴛ. ᴜꜱᴇꜰᴜʟ ᴏɴ ꜱᴍᴀʟʟ ᴅɪꜱᴘʟᴀʏꜱ'
     )
     parser.add_argument(
         '--mtk-wifi',
         action='store_true',
-        help='Активировать драйвер интерфейса MediaTek Wi-Fi при запуске и деактивировать его при выходе '
-             '(для внутренних адаптеров Wi-Fi, реализованных в SoC MediaTek). '
-             'Отключите Wi-Fi в настройках системы, прежде чем использовать это.'
+        help='ᴀᴄᴛɪᴠᴀᴛᴇ ᴍᴇᴅɪᴀᴛᴇᴋ ᴡɪ-ꜰɪ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴅʀɪᴠᴇʀ ᴏɴ ꜱᴛᴀʀᴛᴜᴘ ᴀɴᴅ ᴅᴇᴀᴄᴛɪᴠᴀᴛᴇ ɪᴛ ᴏɴ ᴇxɪᴛ '
+             '(ꜰᴏʀ ɪɴᴛᴇʀɴᴀʟ ᴡɪ-ꜰɪ ᴀᴅᴀᴘᴛᴇʀꜱ ɪᴍᴘʟᴇᴍᴇɴᴛᴇᴅ ɪɴ ᴍᴇᴅɪᴀᴛᴇᴋ ꜱᴏᴄ). '
+             'ᴛᴜʀɴ ᴏꜰꜰ ᴡɪ-ꜰɪ ɪɴ ꜱʏꜱᴛᴇᴍ ꜱᴇᴛᴛɪɴɢꜱ ʙᴇꜰᴏʀᴇ ᴜꜱɪɴɢ ᴛʜɪꜱ.'
     )
     parser.add_argument(
         '-v', '--verbose',
         action='store_true',
-        help='Подробный вывод'
+        help='ᴅᴇᴛᴀɪʟᴇᴅ ᴏᴜᴛᴘᴜᴛ'
     )
 
     args = parser.parse_args()
 
     if sys.hexversion < 0x03060F0:
-        die("Твой питон слишком древний, нужен от 3.6+")
+        die("ʏᴏᴜʀ ᴘʏᴛʜᴏɴ ɪꜱ ᴛᴏᴏ ᴏʟᴅ, ʏᴏᴜ ɴᴇᴇᴅ 3.6+")
     if os.getuid() != 0:
-        die("Через sudo запусти меня!")
+        die("ʀᴜɴ ᴍᴇ ᴛʜʀᴏᴜɢʜ ꜱᴜᴅᴏ!")
 
     if args.mtk_wifi:
         wmtWifi_device = Path("/dev/wmtWifi")
         if not wmtWifi_device.is_char_device():
-            die("Не удалось активировать интерфейсное устройство MediaTek Wi-Fi (--mtk-wifi) "
-                "/dev/wmtWifi не существует или это не символьное устройство")
+            die("ꜰᴀɪʟᴇᴅ ᴛᴏ ᴀᴄᴛɪᴠᴀᴛᴇ ᴍᴇᴅɪᴀᴛᴇᴋ ᴡɪ-ꜰɪ ɪɴᴛᴇʀꜰᴀᴄᴇ ᴅᴇᴠɪᴄᴇ (--mtk-wifi) "
+                "/dev/wmtWifi ᴅᴏᴇꜱ ɴᴏᴛ ᴇxɪꜱᴛ ᴏʀ ɪꜱ ɴᴏᴛ ᴀ ᴄʜᴀʀᴀᴄᴛᴇʀ ᴅᴇᴠɪᴄᴇ")
         wmtWifi_device.chmod(0o644)
         wmtWifi_device.write_text("1")
 
     if not ifaceUp(args.interface):
-        die('Невозможно поднять интерфейс "{}"'.format(args.interface))
+        die('ᴜɴᴀʙʟᴇ ᴛᴏ ᴡᴀᴋᴇ ᴜᴘ ɪɴᴛᴇʀꜰᴀᴄᴇ "{}"'.format(args.interface))
     while True:
         try:
             companion = Companion(args.interface, args.write, print_debug=args.verbose)
@@ -1282,14 +1283,14 @@ if __name__ == '__main__':
                 args.bssid = None
         except KeyboardInterrupt:
             if args.loop:
-                if input("\n[?] Выйти из скрипта (продолжить сканирование ТД)? [n/y] ").lower() == 'y':
-                    print("Отмена…")
+                if input("\n[?] ᴇxɪᴛ ᴛʜᴇ ꜱᴄʀɪᴘᴛ (ᴄᴏɴᴛɪɴᴜᴇ ꜱᴄᴀɴɴɪɴɢ ᴛʜᴇ ᴀᴘ)? [n/y] ").lower() == 'y':
+                    print("ᴄᴀɴᴄᴇʟ...")
                     os.system('clear')
                     break
                 else:
                     args.bssid = None
             else:
-                print("\nОтмена…")
+                print("\n ᴄᴀɴᴄᴇʟ...")
                 os.system('clear')
                 break
 
