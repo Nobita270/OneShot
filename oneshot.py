@@ -636,8 +636,8 @@ class Companion:
         return False
 
     def __credentialPrint(self, wps_pin=None, wpa_psk=None, essid=None):
-        print('(～￣▽￣)～' * 7)
-        print(f"\n\n\n[+] '{essid}' ɪꜱ ʏᴏᴜʀꜱ ɴᴏᴡ (●'◡'●)")
+        print('\n\n\n ( •̀ ω •́ )y おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ!')
+        print(f"\n\n[+] '{essid}' ɪꜱ ʏᴏᴜʀꜱ ɴᴏᴡ (●'◡'●)")
         print(f"[+] ᴘᴀꜱꜱ: '{wpa_psk}'")
         print(f"[+] ᴘɪɴ ᴜꜱᴇᴅ: '{wps_pin}' \n\n\n")
 
