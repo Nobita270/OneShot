@@ -1079,8 +1079,8 @@ class WiFiScanner:
             return
         while 1:
             try:
-                networkNo = input(' おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ!
-                                \n ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜ- ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ')
+                networkNo = input(' おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ!'
+                                \n ' ᴄʜᴏᴏꜱᴇ ʏᴏᴜʀ ᴡᴀɪꜰᴜ- ( ᴇɴᴛᴇʀ ᴛᴏ ᴜᴘᴅᴀᴛᴇ ) : ')
                 if networkNo.lower() in ('r', '0', ''):
                     return self.prompt_network()
                 elif int(networkNo) in networks.keys():
