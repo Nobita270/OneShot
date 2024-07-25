@@ -1075,7 +1075,7 @@ class WiFiScanner:
         networks = self.iw_scanner()
         if not networks:
             os.system("clear")
-            print('\n\n [-] おはよう ございます ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n')
+            print('\n\n [-] ごめんなさい ! ʀᴜᴏᴋ-ꜱᴀᴍᴀᴀᴀᴀᴀᴀᴀ! \n')
             return
         while 1:
             try:
